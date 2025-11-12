@@ -1,7 +1,8 @@
-pkgname="pulse-secure-uta"
-pkgver=22.8.R2
-pkgrel=1
-pkgdesc="Pulse Secure VPN for UTA network"
+# wip
+pkgname="pkgbuild-uta"
+pkgver=0.1.0
+pkgrel=0
+pkgdesc="Lug Nuts PKGBUILD for Arch packages"
 arch=("x86_64")
 depends=("glib2" "gtkmm3>=3.18" "webkit2gtk" "curl" "nss")
 makedepends=("patch")
@@ -9,7 +10,7 @@ makedepends=("patch")
 #optdepends=("")
 #conflicts=("")
 
-url="https://pulse-vpn.uta.edu/split-tunnel"
+url="<tbd>"
 license=("unknown")
 
 options=("!debug")
@@ -24,10 +25,10 @@ sha256sums=('5cd66b89a1b07b6be4176ce554a6b5df1857b0aa67852e20f330d98d6cbcbe0b'
 DATA_DIR="data"
 CONTROL_DIR="control"
 
-# Fixes directories and stuff
+# Set build directories
 prepare()
 {
-    # Create needed directories
+    # Create required directories
     mkdir -p "$srcdir"/"$DATA_DIR"
     mkdir -p "$srcdir"/"$CONTROL_DIR"
 
@@ -63,5 +64,5 @@ package()
 
     # Create symlink to executable in /usr/bin
     mkdir -p "$pkgdir"/usr/bin
-    ln -s /opt/pulsesecure/bin/pulseUI "$pkgdir"/usr/bin/pulseUI
+    ln -s /dir/path "$pkgdir"/usr/bin/path
 }
