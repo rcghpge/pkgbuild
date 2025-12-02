@@ -1,5 +1,5 @@
 # Maintainer: LnOS Development Team <lugnutsclub@proton.me>
-pkgname=lnos-tty-essentials
+pkgname=lnos-tty-essentials # tbd
 pkgver=1.0.0
 pkgrel=7
 pkgdesc="Essential CLI tools and editors for LnOS Arch Edition TTY profile (btop, tldr, fastfetch, emacs, neovim, texinfo)"
