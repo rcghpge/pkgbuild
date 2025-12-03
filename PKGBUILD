@@ -6,7 +6,7 @@ pkgdesc="Essential CLI tools and editors for LnOS Arch Edition TTY profile (btop
 arch=('x86_64' 'aarch64')
 url="https://github.com/lnos-project/lnos-tty-essentials" # tbd
 license=('MIT')
-depends=('btop' 'tldr' 'fastfetch' 'bash' 'emacs' 'neovim' 'texinfo')
+depends=('btop' 'tldr' 'fastfetch' 'bash' 'emacs' 'vim' 'neovim' 'texinfo')
 source=(bashrc)
 sha256sums=('SKIP') # tbd
 
