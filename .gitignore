@@ -1,7 +1,10 @@
-#Exclude everything
+# Exclude 
 *
+*.zst
+pkg/
+src/
 
-#Except these
+# Except these
 !.gitignore
 !PKGBUILD
 !bashrc
