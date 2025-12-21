@@ -19,7 +19,7 @@ makepkg -si
 # install librewolf with yay
 yay -S librewolf-bin
 
-# manually launch KDE Plasma from the terminal (still experimental)
+# Launch a KDE Plasma session from the terminal
 sudo systemctl start sddm -- -session plasma.desktop --wayland
 ```
 
