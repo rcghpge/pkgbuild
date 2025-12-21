@@ -20,9 +20,7 @@ makepkg -si
 yay -S librewolf-bin
 
 # manually launch KDE Plasma from the terminal (still experimental)
-export XDG_SESSION_TYPE=wayland
-export QT_QPA_PLATFORM=wayland
-dbus-run-session startplasma-wayland
+sudo systemctl start sddm -- -session plasma.desktop --wayland
 ```
 
 ---

@@ -10,7 +10,7 @@ depends=(
   'btop' 'tldr' 'fastfetch' 'bash' 'emacs' 'vim' 'neovim' 'texinfo'
   'plasma-desktop' 'plasma-wayland-protocols' 'kwin' 'sddm' 'bat' 
   'qt6-wayland' 'layer-shell-qt' 'xorg-xwayland' 'konsole' 'lynx'
-  'pipewire' 'pipe-wire-alsa' 'pipewire-pulse' 'pipewire-audio'
+  'pipewire' 'pipewire-alsa' 'pipewire-pulse' 'pipewire-audio'
   'wireplumber' 'plasma-pa' 'sof-firmware' 'spectacle' 'gwenview'
   'kinfocenter'
 )
