@@ -23,7 +23,7 @@ yay -S librewolf-bin
 systemctl is-enabled sddm
 
 # Launch a KDE Plasma session from the terminal
-sudo systemctl start sddm -- -session plasma.desktop --wayland
+sudo systemctl start sddm
 
 # Disable SDDM auto-start at boot time if causing issues
 sudo systemctl disable sddm.service
