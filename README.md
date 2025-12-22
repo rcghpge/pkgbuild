@@ -10,17 +10,23 @@ git clone https://github.com/rcghpge/pkgbuild.git
 cd pkgbuild
 makepkg -si
 
-# for web browser recommend install librewolf with yay or install your preferred web browser
+# For web browser recommend install librewolf with yay or install your preferred web browser
 cd ~/Downloads   # or preferred working directory
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 
-# install librewolf with yay
+# Install librewolf with yay
 yay -S librewolf-bin
 
 # Launch a KDE Plasma session from the terminal
 sudo systemctl start sddm -- -session plasma.desktop --wayland
+
+# Disable SDDM auto-start at boot time if causing issues
+sudo systemctl disable sddm.service
+
+# Check if SDDM is enabled
+systemctl is-enabled sddm
 ```
 
 ---
