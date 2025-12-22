@@ -1,4 +1,4 @@
-# pkgbuild
+# tty
 
 LnOS Arch Edition `tty` desktop environment essentials
 
