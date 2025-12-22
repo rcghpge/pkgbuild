@@ -8,11 +8,11 @@ url="https://github.com/lugnuts-at-uta/lnos"
 license=('Apache-2.0')
 depends=(
   'btop' 'tldr' 'fastfetch' 'bash' 'emacs' 'vim' 'neovim' 'texinfo'
-  'plasma-desktop' 'plasma-wayland-protocols' 'kwin' 'sddm' 'bat' 
+  'plasma-desktop' 'plasma-wayland-protocols' 'kwin' 'sddm' 'sddm-kcm' 
   'qt6-wayland' 'layer-shell-qt' 'xorg-xwayland' 'konsole' 'lynx'
   'pipewire' 'pipewire-alsa' 'pipewire-pulse' 'pipewire-audio'
   'wireplumber' 'plasma-pa' 'sof-firmware' 'spectacle' 'gwenview'
-  'kinfocenter' 'bluez' 'bluez-utils'
+  'kinfocenter' 'bluez' 'bluez-utils' 'bat'
 )
 optdepends=(
   'plasma-integration: Qt application integration'
