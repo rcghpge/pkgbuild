@@ -19,14 +19,14 @@ makepkg -si
 # Install librewolf with yay
 yay -S librewolf-bin
 
+# Check if SDDM is enabled
+systemctl is-enabled sddm
+
 # Launch a KDE Plasma session from the terminal
 sudo systemctl start sddm -- -session plasma.desktop --wayland
 
 # Disable SDDM auto-start at boot time if causing issues
 sudo systemctl disable sddm.service
-
-# Check if SDDM is enabled
-systemctl is-enabled sddm
 ```
 
 ---
