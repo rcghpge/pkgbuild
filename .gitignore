@@ -8,3 +8,4 @@ src/
 !PKGBUILD
 !bashrc
 !*.conf
+!Makefile

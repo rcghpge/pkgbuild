@@ -21,7 +21,8 @@ source=(
   bashrc
   sddm-wayland.conf
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('f6d4fc41d8d3259f23f60bfe1d4952954061916b1ce3b0c8fdf3cd55852e90e6'
+            '88b64066085c4d60a4c80327e662bb90c104080a81059955808917b87dc003b2')
 
 package() {
   # CLI essentials
