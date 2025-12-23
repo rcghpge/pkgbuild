@@ -1,62 +1,51 @@
-# .github/workflows/check.yml
+---
 name: PKGBUILD Check
-on: [push, pull_request]
+on:
+  push: true
+  pull_request: true
 
 jobs:
   verify:
     runs-on: ubuntu-latest
-    container: archlinux:latest  
+    container: archlinux:latest
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Run pacman toolchain
-      run: |
-        pacman -Syu --noconfirm
-        pacman -S --noconfirm base-devel devtools pacman-contrib sudo git make
+      - uses: actions/checkout@v4
 
-    - name: Generate build user
-      run: |
-        useradd -m -G wheel builder
-        echo "builder ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/builder
-        chown -R builder:builder .
+      - name: Install pacman toolchain
+        run: |
+          pacman -Syu --noconfirm
+          pacman -S --noconfirm base-devel devtools pacman-contrib sudo git make
 
-    - name: Generate Makefile for build pipeline test
-      run: |
-        cat > Makefile << 'EOF'
-        .PHONY: verify srcinfo test-all clean
+      - name: Create build user
+        run: |
+          useradd -m -G wheel builder
+          echo "builder ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/builder
+          chown -R builder:builder .
 
-        verify:
-		find . -name PKGBUILD -execdir bash -c 'updpkgsums && makepkg --verifysource --nobuild' \; || (echo "Verification FAILED"; exit 1)
+      - name: Update checksums
+        run: sudo -u builder bash -c "find . -name PKGBUILD -execdir updpkgsums \; || true"
 
-	srcinfo:
-		find . -name PKGBUILD -execdir makepkg --printsrcinfo > .SRCINFO \;
+      - name: Verify sources
+        run: |
+          sudo -u builder bash -c "
+            find . -name PKGBUILD -execdir makepkg --verifysource --nobuild \; || {
+              echo 'Verification Failed'
+              exit 1
+            }
+          "
 
-	test-all: verify srcinfo
-		@echo "✓ All tests passed"
+      - name: Generate SRCINFO
+        run: sudo -u builder bash -c "find . -name PKGBUILD -execdir makepkg --printsrcinfo > .SRCINFO \;"
 
-	clean:
-		rm -f .SRCINFO *.pkg.tar.*
-	EOF
-        	chown builder:builder Makefile
+      - name: Create Makefile
+        run: |
+          printf '.PHONY: verify srcinfo test-all clean\n\nverify:\n\tfind . -name PKGBUILD -execdir bash -c '\''updpkgsums && makepkg --verifysource --nobuild'\'' \; || (echo "Verification FAILED"; exit 1)\n\nsrcinfo:\n\tfind . -name PKGBUILD -execdir makepkg --printsrcinfo > .SRCINFO \;\n\ntest-all: verify srcinfo\n\t@echo "All tests passed"\n\nclean:\n\trm -f .SRCINFO *.pkg.tar.*\n' > Makefile
+          chown builder:builder Makefile
 
-    - name: Update checksums and validate
-      run: |
-        sudo -u builder bash -c "
-          find . -name PKGBUILD -execdir updpkgsums \; || true
-          find . -name PKGBUILD -execdir makepkg --verifysource --nobuild \; || (echo 'Verification Failed'; exit 1)
-        "
+      - name: Test Makefile
+        run: sudo -u builder make test-all
 
-    - name: Generate SRCINFO
-      run: |
-        sudo -u builder bash -c "
-          find . -name PKGBUILD -execdir makepkg --printsrcinfo > .SRCINFO \;
-        "
-
-    - name: Check Makefile
-      run: |
-        sudo -u builder make test-all
-
-    - name: Summary Overview
-      run: |
-        echo "✓ All PKGBUILDs verified successfully."
-        find . -name .SRCINFO -exec head -5 {} \;
+      - name: Show results
+        run: |
+          echo "✓ All PKGBUILDs verified!"
+          find . -name .SRCINFO -exec head -5 {} \; || true
