@@ -1,10 +1,10 @@
 # Maintainer: LnOS Development Team <lugnutsclub@proton.me>
-pkgname=lnos-tty-essentials
-pkgver=1.0.0
-pkgrel=8
+pkgname=lnos-tty
+pkgver=1.1.0
+pkgrel=9
 pkgdesc="Essential CLI tools, editors, and minimal KDE Plasma Wayland for LnOS Arch Edition."
 arch=('x86_64' 'aarch64')
-url="https://github.com/lugnuts-at-uta/lnos"
+url="https://github.com/rcghpge/tty"
 license=('Apache-2.0')
 depends=(
   'btop' 'tldr' 'fastfetch' 'bash' 'emacs' 'vim' 'neovim' 'texinfo'
@@ -26,7 +26,7 @@ sha256sums=('SKIP' 'SKIP')
 package() {
   # CLI essentials
   mkdir -p "$pkgdir/etc/skel"
-  install -Dm644 bashrc "$pkgdir/usr/share/lnos-tty-essentials/.bashrc"
+  install -Dm644 bashrc "$pkgdir/usr/share/lnos-tty/.bashrc"
   
   # SDDM Wayland config for Plasma
   install -Dm644 sddm-wayland.conf "$pkgdir/etc/sddm.conf.d/10-wayland.conf"
@@ -38,7 +38,7 @@ post_install() {
   
   cat << EOF
 
-LnOS Arch Edition TTY Essentials 
+LnOS Arch Edition tty Essentials 
 
 CLI Tools:
 - btop: System resource monitoring
@@ -52,7 +52,7 @@ Desktop Environment:
 - sddm: Display manager (TTY1 auto-launches)
 - kwin_wayland: Wayland compositor
 
-TTY Usage:
+tty Usage:
 - Ctrl+Alt+F1: SDDM login (Plasma Wayland default)
 - Ctrl+Alt+F2-F6: TTY sessions
 - Ctrl+Alt+F7: Return to Plasma

@@ -1,0 +1,13 @@
+# .github/workflows/check.yml
+name: PKGBUILD Check
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: archlinux:latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: archlinux/archlinux-updater-action@v1
+    - run: pacman -Syu --noconfirm base-devel devtools pacman-contrib
+    - run: find . -name PKGBUILD -execdir updpkgsums \; 
+    - run: find . -name PKGBUILD -execdir makepkg --verifysource --nobuild \;
+    - run: find . -name PKGBUILD -execdir makepkg --printsrcinfo > .SRCINFO \;

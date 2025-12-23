@@ -3,7 +3,8 @@
 pkg/
 src/
 
-# Except these
+# Except 
 !.gitignore
 !PKGBUILD
 !bashrc
+!*.conf
