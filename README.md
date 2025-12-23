@@ -1,5 +1,7 @@
 # tty
 
+[![PKGBUILD Check](https://github.com/rcghpge/tty/actions/workflows/check.yml/badge.svg)](https://github.com/rcghpge/tty/actions/workflows/check.yml)
+
 LnOS Arch Edition `tty` desktop environment essentials
 
 ---
