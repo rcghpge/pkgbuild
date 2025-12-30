@@ -13,7 +13,8 @@ depends=(
   'pipewire' 'pipewire-alsa' 'pipewire-pulse' 'pipewire-audio'
   'wireplumber' 'plasma-pa' 'sof-firmware' 'spectacle' 'gwenview'
   'kinfocenter' 'bluez' 'bluez-utils' 'bluedevil' 'bat' 'kscreen'
-  'glycin' 'bubblewrap-suid' 'xdg-desktop-portal-kde'
+  'glycin' 'bubblewrap-suid' 'xdg-desktop-portal-kde' 'qemu'
+  'virt-manager' 'libvirt' 'dnsmasq' 'ebtables' 'iptables-nft'
 )
 optdepends=(
   'plasma-integration: Qt application integration'
