@@ -2,7 +2,7 @@
 
 [![PKGBUILD Check](https://github.com/rcghpge/tty/actions/workflows/check.yml/badge.svg)](https://github.com/rcghpge/tty/actions/workflows/check.yml)
 
-LnOS Arch Edition `tty` desktop environment essentials
+LnOS Arch Edition `tty` desktop environment essentials. Packaged with minimal KDE Plasma 6 Desktop + Wayland Compositor for an enhanced desktop environment.
 
 ---
 
